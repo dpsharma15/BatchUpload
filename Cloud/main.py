@@ -1,6 +1,6 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
-import Form308, Form813
+import Form308, Form813 ,Form815
 
 st.set_page_config(page_title="Batch Upload")
 
@@ -20,7 +20,7 @@ class MultiApp:
             st.markdown("<h1 style='color: orange; font-weight: bold;'>Batch Uploading</h1>", unsafe_allow_html=True)
             app = option_menu(
                 menu_title="",
-                options=["Form308", "Form813"],
+                options=["Form308", "Form813","Form815"],
                 icons=["house-fill", "person-circle"],
                 menu_icon="chat-text-fill",
                 default_index=1,
@@ -41,6 +41,7 @@ multi_app = MultiApp()
 # Add apps to the MultiApp instance
 multi_app.add_app("Form308", Form308.app)
 multi_app.add_app("Form813", Form813.app)
+multi_app.add_app("Form815", Form815.app)
 
 # Run the MultiApp instance
 multi_app.run()
