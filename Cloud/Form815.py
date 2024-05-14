@@ -288,7 +288,7 @@ def app():
                 st.download_button(
                     label="Download All Files",
                     data=zip_file,
-                    file_name='all_files_813.zip',
+                    file_name='all_files_815.zip',
                     mime='application/zip'
                 )
                 
