@@ -192,6 +192,22 @@ def app():
                     Step2_df = pd.concat([Step2_df, new_row_df], ignore_index=True)
                 Step_1 = Step_1.astype(str)
                 Step_1 = Step_1.replace('nan', '')
+                def convert_step_point(value):
+                    try:
+                        # Try to convert to a float
+                        float_value = float(value)
+                        # If the float value is an integer, convert to int
+                        if float_value.is_integer():
+                            return int(float_value)
+                        else:
+                            return float_value
+                    except ValueError:
+                        # If conversion fails, return the original value
+                        return value
+                Step_1["Step Point"] = Step_1["Step Point"].apply(convert_step_point)
+                # Convert the "Step Point" column to text
+                # Convert the column to object type
+                Step_1["Step Point"] = Step_1["Step Point"].apply(lambda x: str(int(x)) if isinstance(x, float) and x.is_integer() else str(x))
                 # Save DataFrame to BytesIO object
                 output = io.BytesIO()
                 with pd.ExcelWriter(output, engine='openpyxl') as writer:
